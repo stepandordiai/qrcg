@@ -1,42 +1,80 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+
+body {
+    font-family: "Outfit", serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    overflow: hidden;
+    background-color: black;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+    font-size: 2rem;
+    color: white;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main {
+    position: fixed;
+    top: 100px;
+    right: 10px;
+    bottom: 100px;
+    left: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    row-gap: 10px;
 }
 
-.card {
-  padding: 2em;
+input {
+    border: none;
+    background: rgba(255, 255, 255, 0.5);
+    color: white;
+    padding: 10px;
+    width: 300px;
 }
 
-.read-the-docs {
-  color: #888;
+input:focus {
+    outline: none;
+}
+
+button {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 10px;
+}
+
+.img-container {
+    display: grid;
+    place-content: center;
+    width: 160px;
+    height: 160px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 700px) {
+    .main {
+        flex-direction: column-reverse;
+    }
 }

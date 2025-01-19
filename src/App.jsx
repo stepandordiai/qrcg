@@ -1,7 +1,6 @@
 import QRCode from "qrcode";
-
-import "./App.css";
 import { useState } from "react";
+import "./App.css";
 
 function App() {
     const [url, setUrl] = useState("");
@@ -16,15 +15,23 @@ function App() {
     };
     return (
         <div>
-            <h1>QR Code Generator</h1>
-            <input
-                type="text"
-                placeholder="write url here"
-                value={url}
-                onChange={(evt) => setUrl(evt.target.value)}
-            />
-            <button onClick={GenerateQRCode}>Generate</button>
-            <img src={qrcode} alt="" />
+            <header className="header">
+                <p className="logo">QRCG</p>
+            </header>
+            <main className="main">
+                <div className="input-container">
+                    <input
+                        type="text"
+                        placeholder="write url here"
+                        value={url}
+                        onChange={(evt) => setUrl(evt.target.value)}
+                    />
+                    <button onClick={GenerateQRCode}>Generate</button>
+                </div>
+                <div className="img-container">
+                    <img src={qrcode} alt="" />
+                </div>
+            </main>
         </div>
     );
 }

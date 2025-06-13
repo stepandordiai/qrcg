@@ -1,10 +1,11 @@
 import QRCode from "qrcode";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
 	const [url, setUrl] = useState("");
 	const [qrcode, setQrcode] = useState("");
+	const [inputs, setInputs] = useState({});
 
 	const GenerateQRCode = () => {
 		QRCode.toDataURL(
@@ -13,6 +14,10 @@ function App() {
 				width: 256,
 				margin: 2,
 				borderRadius: 25,
+				color: {
+					dark: inputs.qrColor,
+					light: inputs.bgColor,
+				},
 			},
 			(err, url) => {
 				if (err) return console.error(err);
@@ -20,6 +25,13 @@ function App() {
 			}
 		);
 	};
+
+	const handleChange = (event) => {
+		const name = event.target.name;
+		const value = event.target.value;
+		setInputs((values) => ({ ...values, [name]: value }));
+	};
+
 	return (
 		<>
 			<header className="header">
@@ -51,6 +63,21 @@ function App() {
 							onChange={(e) => setUrl(e.target.value)}
 						/>
 						<button onClick={GenerateQRCode}>Generate</button>
+					</div>
+				</div>
+				<div>
+					<div className="input-clr-container">
+						<label htmlFor="">Set background color</label>
+						<input
+							type="color"
+							onChange={handleChange}
+							name="bgColor"
+							id="bg-color"
+						/>
+					</div>
+					<div className="input-clr-container">
+						<label htmlFor="">Set qr color</label>
+						<input type="color" onChange={handleChange} name="qrColor" id="" />
 					</div>
 				</div>
 			</main>
